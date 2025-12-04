@@ -18,7 +18,6 @@ for i in range(70, 71):
         time.sleep(1)
 
         ul_tags = driver.find_elements(By.TAG_NAME, "ul")
-        print(len(ul_tags))
 
         ul_painters = ul_tags[19]
 
@@ -79,8 +78,6 @@ columns = ['name', 'birth', 'death', 'nationality']
 all_painter_df = pd.DataFrame(all_painter_data, columns=columns)
 
 print(all_painter_df)
-
-import os
 
 all_painter_df.to_csv('all_painter_data.csv', index=False)
 print('Data Frame is written to csv file successfully.')

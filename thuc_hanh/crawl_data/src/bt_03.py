@@ -14,15 +14,28 @@ driver.maximize_window()
 time.sleep(2)
 
 ul_tags = driver.find_elements(By.TAG_NAME, "ul")
-print(len(ul_tags))
 
-ul_painters = ul_tags[20]
+ul_painters = ul_tags[19]
 
 li_tags = ul_painters.find_elements(By.TAG_NAME, "li")
-print(len(li_tags))
-links = [tag.find_element(By.TAG_NAME, "a").get_attribute("href") for tag in li_tags]
 
-titles = [tag.find_element(By.TAG_NAME, "a").get_attribute("title") for tag in li_tags]
+links = []
+for tag in li_tags:
+    try:
+        a = tag.find_element(By.TAG_NAME, "a")
+        links.append(a.get_attribute("href"))
+    except:
+        continue
+
+
+titles = []
+for tag in li_tags:
+    try:
+        a = tag.find_element(By.TAG_NAME, "a")
+        titles.append(a.get_attribute("title"))
+    except:
+        continue
+
 
 for link in links:
     print(link)
